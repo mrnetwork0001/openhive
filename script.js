@@ -197,15 +197,47 @@ function setupEventListeners() {
         }
     });
 
-    // Connect Wallet (Mock)
-    connectWalletBtn.addEventListener('click', () => {
-        connectWalletBtn.textContent = 'Connecting...';
-        setTimeout(() => {
-            connectWalletBtn.textContent = '0xA31...9F0b';
-            connectWalletBtn.style.background = 'rgba(58, 123, 213, 0.2)';
-            connectWalletBtn.style.borderColor = 'var(--accent-blue)';
-            connectWalletBtn.style.boxShadow = 'var(--accent-glow)';
-        }, 1200);
+    // Connect Wallet (EVM)
+    connectWalletBtn.addEventListener('click', async () => {
+        if (typeof window.ethereum !== 'undefined') {
+            try {
+                connectWalletBtn.textContent = 'Connecting...';
+
+                // Request account access
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                const account = accounts[0];
+
+                // Format the address for display (e.g., 0xA31...9F0b)
+                const formattedAddress = `${account.substring(0, 6)}...${account.substring(account.length - 4)}`;
+
+                connectWalletBtn.textContent = formattedAddress;
+                connectWalletBtn.style.background = 'rgba(58, 123, 213, 0.2)';
+                connectWalletBtn.style.borderColor = 'var(--accent-blue)';
+                connectWalletBtn.style.boxShadow = 'var(--accent-glow)';
+
+                // Listen for account changes
+                window.ethereum.on('accountsChanged', (newAccounts) => {
+                    if (newAccounts.length > 0) {
+                        const newAccount = newAccounts[0];
+                        connectWalletBtn.textContent = `${newAccount.substring(0, 6)}...${newAccount.substring(newAccount.length - 4)}`;
+                    } else {
+                        connectWalletBtn.textContent = 'Connect Wallet';
+                        connectWalletBtn.style.background = '';
+                        connectWalletBtn.style.borderColor = '';
+                        connectWalletBtn.style.boxShadow = '';
+                    }
+                });
+            } catch (error) {
+                console.error("User denied account access or error occurred:", error);
+                connectWalletBtn.textContent = 'Connection Failed';
+                setTimeout(() => {
+                    connectWalletBtn.textContent = 'Connect Wallet';
+                }, 2000);
+            }
+        } else {
+            alert('No EVM wallet found. Please install MetaMask, Rabby, or another Web3 wallet.');
+            connectWalletBtn.textContent = 'Connect Wallet';
+        }
     });
 
     // Run Inference Submisson
