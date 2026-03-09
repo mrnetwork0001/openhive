@@ -8,7 +8,7 @@ const modelsData = [
         author: "Meta & OpenGradient",
         architecture: "Transformer",
         inferences: "142,593",
-        cost: "0.005 $OG",
+        cost: "0.005 $OPG",
         node: "TEE Enclave (Sprinter)",
         description: "Optimized 8B parameter instruct model running secure inference."
     },
@@ -20,7 +20,7 @@ const modelsData = [
         author: "StabilityAI",
         architecture: "Diffusion",
         inferences: "89,012",
-        cost: "0.012 $OG",
+        cost: "0.012 $OPG",
         node: "Local Worker",
         description: "High-resolution image generation model verified on-chain."
     },
@@ -32,7 +32,7 @@ const modelsData = [
         author: "OpenAI port",
         architecture: "Transformer",
         inferences: "45,821",
-        cost: "0.008 $OG",
+        cost: "0.008 $OPG",
         node: "TEE Enclave",
         description: "Robust multilingual speech recognition model."
     },
@@ -44,7 +44,7 @@ const modelsData = [
         author: "0xQuantLabs",
         architecture: "XGBoost",
         inferences: "215,904",
-        cost: "0.001 $OG",
+        cost: "0.001 $OPG",
         node: "On-Chain Smart Cont.",
         description: "Predicts optimal yield farming routes using SolidML library."
     },
@@ -56,7 +56,7 @@ const modelsData = [
         author: "Mistral",
         architecture: "Transformer",
         inferences: "62,109",
-        cost: "0.006 $OG",
+        cost: "0.006 $OPG",
         node: "Sprinter Node",
         description: "Multimodal LLM optimized for fast decentralized inference."
     },
@@ -68,7 +68,7 @@ const modelsData = [
         author: "AIAudioHub",
         architecture: "VITS",
         inferences: "12,450",
-        cost: "0.015 $OG",
+        cost: "0.015 $OPG",
         node: "Sprinter Node",
         description: "High-fidelity zero-shot voice cloning model."
     }
