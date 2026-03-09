@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenHive | OpenGradient AI Explorer</title>
+    <meta name="description"
+        content="Explore, analyze, and run basic inferences on decentralized AI models in the OpenGradient network.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="blob-bg blob-1"></div>
+    <div class="blob-bg blob-2"></div>
+
+    <header class="navbar">
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <h1>OpenHive</h1>
+        </div>
+        <nav class="nav-links">
+            <a href="#" class="active" data-target="page-hub">Model Hub</a>
+            <a href="#" data-target="page-nodes">Inference Nodes</a>
+            <a href="#" data-target="page-stats">Network Stats</a>
+            <a href="#" data-target="page-docs">Docs</a>
+        </nav>
+        <div class="nav-actions">
+            <button class="theme-btn" id="themeToggleBtn" aria-label="Toggle Theme"></button>
+            <button class="wallet-btn" id="connectWalletBtn">Connect Wallet</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Model Hub Page -->
+        <div id="page-hub" class="page-section active">
+            <section class="hero">
+                <h2><span id="heroTitle"></span><span class="typewriter-cursor">|</span></h2>
+                <p>Discover, verify, and interact with open-source AI models seamlessly deployed on OpenGradient's Layer
+                    1
+                    EVM network.</p>
+                <div class="search-bar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="searchInput"
+                        placeholder="Search for models, datasets, or creator addresses...">
+                </div>
+            </section>
+
+            <div class="content-layout">
+                <aside class="sidebar">
+                    <h3>Categories</h3>
+                    <ul class="filter-list">
+                        <li class="active" data-filter="all">All Models</li>
+                        <li data-filter="llm">Large Language Models (LLMs)</li>
+                        <li data-filter="vision">Computer Vision</li>
+                        <li data-filter="audio">Audio Generation</li>
+                        <li data-filter="predictive">Predictive Analysis</li>
+                    </ul>
+
+                    <h3>Execution Enclave</h3>
+                    <label class="checkbox-container">
+                        <input type="checkbox" checked>
+                        <span class="checkmark"></span>
+                        TEE Proxy
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="checkbox" checked>
+                        <span class="checkmark"></span>
+                        Local Inference
+                    </label>
+
+                    <h3>Status</h3>
+                    <label class="checkbox-container">
+                        <input type="checkbox" checked>
+                        <span class="checkmark"></span>
+                        Active
+                    </label>
+                </aside>
+
+                <section class="models-grid" id="modelsGrid">
+                    <!-- Models will be dynamically injected here -->
+                </section>
+            </div>
+        </div>
+
+        <!-- Inference Nodes Page -->
+        <div id="page-nodes" class="page-section" style="display: none;">
+            <div class="mock-page-content">
+                <h2>Inference Nodes (The Sprinter)</h2>
+                <p>The OpenGradient Hybrid AI Compute Architecture (HACA) achieves scalability through node
+                    specialization.</p>
+                <div class="mock-grid">
+                    <div class="mock-card">
+                        <h3>Node 0x1A4...</h3>
+                        <p>Status: Active</p>
+                        <p>Type: TEE Enclave</p>
+                        <p>Models Supported: LLMs</p>
+                    </div>
+                    <div class="mock-card">
+                        <h3>Node 0x9B2...</h3>
+                        <p>Status: Active</p>
+                        <p>Type: Local Worker</p>
+                        <p>Models Supported: Vision, Audio</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Network Stats Page -->
+        <div id="page-stats" class="page-section" style="display: none;">
+            <div class="mock-page-content">
+                <h2>Network Stats</h2>
+                <p>Live metrics from the OpenGradient Nova Testnet.</p>
+                <div class="mock-stats-grid">
+                    <div class="stat">
+                        <span class="stat-label">Total verifiable inferences</span>
+                        <span class="stat-value">842,910</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Active Inference Nodes</span>
+                        <span class="stat-value">1,402</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Average Block Time</span>
+                        <span class="stat-value">2.4s</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Docs Page -->
+        <div id="page-docs" class="page-section" style="display: none;">
+            <div class="mock-page-content">
+                <h2>Documentation</h2>
+                <p>Learn how to build and deploy intelligent applications on OpenGradient.</p>
+                <ul class="mock-doc-list">
+                    <li><strong>OpenGradient SDK:</strong> Bringing decentralized AI tooling to Python and CLI.</li>
+                    <li><strong>SolidML:</strong> The smart contract library for on-chain verifiable ML operations.</li>
+                    <li><strong>Neuro Stack:</strong> Build complete AI agents that are verifiable entirely on-chain.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="app-footer">
+        <p>Built by <a href="https://x.com/encrypt_wizard" target="_blank" rel="noopener noreferrer">MrNetwork</a></p>
+    </footer>
+
+    <!-- Modal overlay for inference -->
+    <div class="modal-overlay" id="inferenceModal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModalBtn">&times;</button>
+            <div class="modal-header">
+                <span class="badge model-type" id="modalModelType">LLM</span>
+                <h2 id="modalModelName">Model Name</h2>
+                <p class="model-author" id="modalModelAuthor">by 0x...</p>
+            </div>
+
+            <div class="modal-body">
+                <div class="metadata-grid">
+                    <div class="meta-item">
+                        <span class="meta-label">Architecture</span>
+                        <span class="meta-value" id="modalArchitecture">Transformer</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Total Inferences</span>
+                        <span class="meta-value" id="modalInferences">0</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Cost per query</span>
+                        <span class="meta-value" id="modalCost">0.00$OG</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Node Environment</span>
+                        <span class="meta-value" id="modalNode">TEE Enclave</span>
+                    </div>
+                </div>
+
+                <div class="inference-section">
+                    <h3>Run Inference (Mock)</h3>
+                    <div class="terminal-container">
+                        <textarea id="promptInput" placeholder="Enter your prompt or input data here..."
+                            rows="4"></textarea>
+                        <button class="run-btn" id="runInferenceBtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                            Execute on OpenGradient
+                        </button>
+                    </div>
+
+                    <div class="result-box" id="resultBox" style="display: none;">
+                        <div class="result-header">
+                            <span>Output</span>
+                            <span class="verifiable-badge">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                                Verified On-Chain
+                            </span>
+                        </div>
+                        <div class="result-content" id="resultContent">
+                            <!-- Output goes here -->
+                        </div>
+                        <div class="proof-data">Proof Hash: <span id="proofHash"></span></div>
+                    </div>
+
+                    <div class="loading-state" id="loadingState" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>Generating proof and running inference on The Sprinter nodes...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
